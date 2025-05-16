@@ -38,5 +38,41 @@ client.connect()
         { name: 'Chuck', address: 'Main Road 989' },
         { name: 'Viola', address: 'Sideway 1633' }
         ];
+        /*dbo.collection('customers').insertMany(custData).then(function(res){
+        console.log("number of documents inserted"+ res.insertedCount);
+        client.close()
+        })
+        dbo.collection('customers').findOne({}).then(function(res){
+        console.log(res.name);
+        client.close()
+        })*/
+       /*var query = { address: "Park Lane 38" };
+        dbo.collection('customers').find(query)
+        .toArray()
+        .then(items => {
+            console.log(`Successfully found ${items.length} documents.`);
+            console.log(items);
+            client.close();
+        });*/
+        /*var mysort = { name: 1 };
+        dbo.collection('customers').find()
+        .sort(mysort)
+        .toArray()
+        .then(items => {
+            console.log(`Successfully sorted ${items.length} documents.`);
+            console.log(items);
+            client.close();
+        });*/
+        /*var myquery = {address: 'Mountain 21'}
+        dbo.collection('customers').deleteOne(myquery).then(function() {
+            console.log("1 document deleted");
+            client.close();
+        })*/
+        var myquery = {address: 'Valley 345'};
+        var newvalues = {$set: {name: "Wickey", address: "Canyon 123"}};
+        dbo.collection('customers').updateOne(myquery, newvalues).then(function() {
+            console.log("1 document updated");
+            client.close();
+        })
     })
     .catch(error => console.log('Failed to connect', error))
